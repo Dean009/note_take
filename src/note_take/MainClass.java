@@ -5,10 +5,11 @@ import java.awt.*;
 
 public class MainClass {
 	
+	
 	public static void main(String[] args) {
 		
-		TopLevelWindow tl = new TopLevelWindow();
-		tl.createWindow();
+		new TopLevelWindow().createWindow();
+		
 		
 		
 		
