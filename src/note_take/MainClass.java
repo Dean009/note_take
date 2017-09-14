@@ -8,6 +8,7 @@ public class MainClass extends JPanel implements ActionListener {
     protected JTextField textField;
     protected JTextArea textArea;
     private final static String newline = "\n";
+    private static int entered = 0;
 
     public MainClass() {
         super(new GridBagLayout());
@@ -15,7 +16,7 @@ public class MainClass extends JPanel implements ActionListener {
         textField = new JTextField(20);
         textField.addActionListener(this);
 
-        textArea = new JTextArea(5, 20);
+        textArea = new JTextArea(30, 3);
         textArea.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(textArea);
 
@@ -33,9 +34,11 @@ public class MainClass extends JPanel implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent evt) {
+    	entered++;
         String text = textField.getText();
-        textArea.append(text + newline);
+        textArea.append(entered +":  " + text + newline);
         textField.selectAll();
+        textField.setText("");
 
         //Make sure the new text is visible, even if there
         //was a selection in the text area.
