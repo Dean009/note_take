@@ -8,7 +8,7 @@ public class MainClass {
 	
 	public static void main(String[] args) {
 		
-		new TopLevelWindow().createWindow();
+		new MainFrame().createWindow();
 		
 		
 		

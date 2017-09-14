@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
-public class TopLevelWindow {
+public class MainFrame {
 	
 	protected static JFrame frame;
 	protected static JLabel label1;
