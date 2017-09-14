@@ -2,6 +2,7 @@ package note_take;
 
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.border.*;
 
 public class TopLevelWindow {
 	
@@ -10,6 +11,7 @@ public class TopLevelWindow {
 	protected static JTextArea storedText;
 	protected static JScrollPane topScrollPane;
 	protected static JPanel mainPanel;
+	protected static javax.swing.border.Border blackline;
 	
 	// creates the window
 	public static void createWindow() {	
@@ -20,7 +22,6 @@ public class TopLevelWindow {
 		//adding a label
 		label1 = new JLabel("A label on the window");
 		label1.setPreferredSize(new Dimension(300, 100));
-		frame.getContentPane().add(label1, BorderLayout.CENTER);
 		
 		//Display the window
 		frame.setLocationRelativeTo(null);
@@ -34,8 +35,14 @@ public class TopLevelWindow {
 				
 		//creating the already stored tasks
 		mainPanel = new JPanel();
-		mainPanel.setLayout(new BorderLayout(5, 5));
-		mainPanel.setBackground(Color.LIGHT_GRAY);
+		
+		//setting panel size/background and making it visible
+		mainPanel.setSize(new Dimension(330, 290));
+		blackline = BorderFactory.createLineBorder(Color.black);
+	//	mainPanel.setBorder(blackline);
+		mainPanel.setBorder(new EmptyBorder(20, 20, 20, 20));
+		mainPanel.setVisible(true);
+		
 		
 		//creating the saved tasks
 		storedText = new JTextArea(5, 20);
@@ -43,8 +50,10 @@ public class TopLevelWindow {
 		storedText.setEditable(false);
 		
 		// adding the components
-		frame.add(mainPanel).setBackground(Color.GRAY); // add the MainPanel to the frame
+		frame.add(mainPanel).setBackground(Color.LIGHT_GRAY); // add the MainPanel to the frame
 		mainPanel.add(storedText).setVisible(true); // adds to the mainPanel
+		frame.add(label1).setVisible(true); // adding the label and making it visible
+		
 		
 		
 		
