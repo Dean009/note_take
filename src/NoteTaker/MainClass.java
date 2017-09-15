@@ -27,17 +27,16 @@ public class MainClass {
 	}
 
 	public static void main(String[] args) {
-		createWindow();
-		
+		createWindow("Pro-crastin8or");	
 	}
 
-	public static void createWindow() {
+	public static void createWindow(String aTitle) {
 		
 		//creating the font
 		font = new Font("Book Antiqua", font.PLAIN, 20);	
 		
 		//creating the frame 
-		frame = new JFrame("PRO-Crastin8or");
+		frame = new JFrame(aTitle);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(330,700));
      
