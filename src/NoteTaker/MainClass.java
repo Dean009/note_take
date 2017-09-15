@@ -67,10 +67,24 @@ public class MainClass {
         
         
         //second menu option
-        subMenu = new JMenu("Settings");
+        subMenu = new JMenu("Options");
         subMenu.setMnemonic(KeyEvent.VK_A);
         subMenu.getAccessibleContext().setAccessibleDescription("The only menu in this program that has menu items");
         menuBar.add(subMenu);
+        
+        //adding submenuitems to the first menu option
+        menuItem = new JMenuItem("Launch on Windows start up");
+        menuItem.setMnemonic(KeyEvent.VK_B);
+        subMenu.add(menuItem);
+        
+        //adding submenuitems to the first menu option
+        menuItem = new JMenuItem("Change Font");
+        menuItem.setMnemonic(KeyEvent.VK_B);
+        subMenu.add(menuItem);
+        
+        
+        
+        
         
         
         //third menu option
@@ -78,6 +92,17 @@ public class MainClass {
         subMenu.setMnemonic(KeyEvent.VK_A);
         subMenu.getAccessibleContext().setAccessibleDescription("The only menu in this program that has menu items");
         menuBar.add(subMenu);
+        
+        //adding submenuitems to the first menu option
+        menuItem = new JMenuItem("User Agreement");
+        menuItem.setMnemonic(KeyEvent.VK_B);
+        subMenu.add(menuItem);
+        
+        //adding submenuitems to the first menu option
+        menuItem = new JMenuItem("Version");
+        menuItem.setMnemonic(KeyEvent.VK_B);
+        subMenu.add(menuItem);
+        
         
         
         
