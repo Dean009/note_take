@@ -126,7 +126,7 @@ public class MainClass {
         
         //creating the main panel
         mainPanel = new JPanel();
-        mainPanel.setBounds(4, 3, 310, 200);
+        mainPanel.setBounds(6, 3, 310, 200);
         mainPanel.setBackground(Color.WHITE);
         
         //adding top title
@@ -136,9 +136,10 @@ public class MainClass {
         //adding an underline to the topLabel
         makeFontUnderlined(topLabel);  
         
+        //adding the second panel
         secondPanel = new JPanel();
         secondPanel.setBounds(10,10, 310,200);
-        secondPanel.setBackground(Color.WHITE);
+        secondPanel.setBackground(Color.ORANGE);
         
         //adding the textArea
        
@@ -147,6 +148,7 @@ public class MainClass {
         frame.setJMenuBar(menuBar);
         mainPanel.add(topLabel);
         frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
+        frame.add(secondPanel);
                
         // pack and display the frame
         frame.pack();
