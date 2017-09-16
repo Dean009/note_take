@@ -2,6 +2,7 @@ package NoteTaker;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -17,9 +18,10 @@ public class MainClass {
 	private static JMenuItem menuItem;
 	private static JLabel topLabel;
 	private static Font font;
-	private static JTextField mainText;
+	private static JTextField textField;
+	private static JTextArea textArea;
 	private final static String newLine = "\n";
-	
+	private static JPanel secondPanel;
 	
 	public MainClass() {
 		
@@ -134,11 +136,12 @@ public class MainClass {
         //adding an underline to the topLabel
         makeFontUnderlined(topLabel);  
         
+        secondPanel = new JPanel();
+        secondPanel.setBounds(10,10, 310,200);
+        secondPanel.setBackground(Color.WHITE);
+        
         //adding the textArea
-        mainText = new JTextField(1);
-        
-        
-        
+       
         
         //adding the menu bar and the main panel to the frame
         frame.setJMenuBar(menuBar);
@@ -160,6 +163,12 @@ public class MainClass {
 	     Map attributes = font2.getAttributes();
 	     attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
 	     aLabel.setFont(font2.deriveFont(attributes));
+	}
+	
+	public void actionPerformed(ActionEvent e) {
+		String text = textField.getText();
+		textArea.append(text + newLine);
+		textField.selectAll();
 	}
 	
 	
