@@ -1,11 +1,11 @@
 package NoteTaker;
 
 import javax.swing.*;
-
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Text;
-
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.font.TextAttribute;
 import java.util.Map;
 
@@ -16,11 +16,8 @@ public class MainClass {
 	private static JMenuBar menuBar;
 	private static JMenu subMenu;
 	private static JMenuItem menuItem;
-	private static JRadioButtonMenuItem rbMenuItem;
-	private static JCheckBoxMenuItem jcbMenuItem;
 	private static JLabel topLabel;
 	private static Font font;
-	
 	
 	public MainClass() {
 		
@@ -30,8 +27,7 @@ public class MainClass {
 		createWindow("Pro-crastin8or");	
 	}
 
-	public static void createWindow(String aTitle) {
-		
+	public static void createWindow(String aTitle) {	
 		//creating the font
 		font = new Font("Book Antiqua", font.PLAIN, 20);	
 		
@@ -49,11 +45,11 @@ public class MainClass {
         //first menu option
         subMenu = new JMenu("File");
         subMenu.setMnemonic(KeyEvent.VK_A);
-        subMenu.getAccessibleContext().setAccessibleDescription("The only menu in this program that has menu items");
+        subMenu.getAccessibleContext();
         menuBar.add(subMenu);
         
         //adding submenuitems to the first menu option
-        menuItem = new JMenuItem("Open File");
+        menuItem = new JMenuItem("Open File"); 
         menuItem.setMnemonic(KeyEvent.VK_B);
         subMenu.add(menuItem);
         
@@ -79,7 +75,7 @@ public class MainClass {
         //second menu option
         subMenu = new JMenu("Options");
         subMenu.setMnemonic(KeyEvent.VK_A);
-        subMenu.getAccessibleContext().setAccessibleDescription("The only menu in this program that has menu items");
+        subMenu.getAccessibleContext();
         menuBar.add(subMenu);
         
         //adding submenuitems to the first menu option
@@ -100,7 +96,7 @@ public class MainClass {
         //third menu option
         subMenu = new JMenu("About");
         subMenu.setMnemonic(KeyEvent.VK_A);
-        subMenu.getAccessibleContext().setAccessibleDescription("The only menu in this program that has menu items");
+        subMenu.getAccessibleContext();
         menuBar.add(subMenu);
         
         //adding submenuitems to the first menu option
@@ -111,6 +107,15 @@ public class MainClass {
         //adding submenuitems to the first menu option
         menuItem = new JMenuItem("Version");
         menuItem.setMnemonic(KeyEvent.VK_B);
+        menuItem.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent e) {
+            	JFrame newFrame = new JFrame("Version");
+        		newFrame.setSize(300,300);
+        		newFrame.getContentPane().setBackground(Color.white);
+        		newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        		newFrame.setVisible(true);
+            	}
+            });
         subMenu.add(menuItem);
         
         
@@ -129,35 +134,21 @@ public class MainClass {
         //adding an underline to the topLabel
         makeFontUnderlined(topLabel);
         
-     
-        
         //adding the menu bar and the main panel to the frame
         frame.setJMenuBar(menuBar);
         mainPanel.add(topLabel);
         frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
-        
                
         // pack and display the frame
         frame.pack();
         frame.setResizable(false);
         frame.setVisible(true);
         
-        
-        
-        
-        
+  
         
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 	public static void makeFontUnderlined(JLabel aLabel) {
 		 Font font2 = aLabel.getFont();
 	     Map attributes = font2.getAttributes();
