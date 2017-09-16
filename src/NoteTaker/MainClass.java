@@ -102,6 +102,15 @@ public class MainClass {
         //adding submenuitems to the first menu option
         menuItem = new JMenuItem("User Agreement");
         menuItem.setMnemonic(KeyEvent.VK_B);
+        menuItem.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent e) {
+            	JFrame newFrame = new JFrame("User Agreement");
+        		newFrame.setSize(300,300);
+        		newFrame.getContentPane().setBackground(Color.white);
+        		newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        		newFrame.setVisible(true);
+            	}
+            });
         subMenu.add(menuItem);
         
         //adding submenuitems to the first menu option
