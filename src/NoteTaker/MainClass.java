@@ -17,6 +17,9 @@ public class MainClass {
 	private static JMenuItem menuItem;
 	private static JLabel topLabel;
 	private static Font font;
+	private static JTextField mainText;
+	private final static String newLine = "\n";
+	
 	
 	public MainClass() {
 		
@@ -66,11 +69,7 @@ public class MainClass {
         menuItem = new JMenuItem("close");
         menuItem.setMnemonic(KeyEvent.VK_B);
         subMenu.add(menuItem);
-        
-        
-        
-        
-        
+
         //second menu option
         subMenu = new JMenu("Options");
         subMenu.setMnemonic(KeyEvent.VK_A);
@@ -86,12 +85,7 @@ public class MainClass {
         menuItem = new JMenuItem("Change Font");
         menuItem.setMnemonic(KeyEvent.VK_B);
         subMenu.add(menuItem);
-        
-        
-        
-        
-        
-        
+   
         //third menu option
         subMenu = new JMenu("About");
         subMenu.setMnemonic(KeyEvent.VK_A);
@@ -122,13 +116,11 @@ public class MainClass {
         		newFrame.getContentPane().setBackground(Color.white);
         		newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         		newFrame.setVisible(true);
+        		JLabel jLab = new JLabel("Version: ALPHA 0.02", SwingConstants.CENTER); // centering the label text into middle of the frame
+        		newFrame.add(jLab);
             	}
             });
         subMenu.add(menuItem);
-        
-        
-        
-        
         
         //creating the main panel
         mainPanel = new JPanel();
@@ -141,6 +133,12 @@ public class MainClass {
 
         //adding an underline to the topLabel
         makeFontUnderlined(topLabel);  
+        
+        //adding the textArea
+        mainText = new JTextField(1);
+        
+        
+        
         
         //adding the menu bar and the main panel to the frame
         frame.setJMenuBar(menuBar);
