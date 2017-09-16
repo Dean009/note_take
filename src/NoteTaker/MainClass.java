@@ -1,7 +1,6 @@
 package NoteTaker;
 
 import javax.swing.*;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Text;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -141,7 +140,7 @@ public class MainClass {
         topLabel.setFont(font);
 
         //adding an underline to the topLabel
-        makeFontUnderlined(topLabel);
+        makeFontUnderlined(topLabel);  
         
         //adding the menu bar and the main panel to the frame
         frame.setJMenuBar(menuBar);
