@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -128,7 +130,7 @@ public class MainClass {
         subMenu.add(menuItem);
             
         //adding the textArea
-        textField = new JTextField(30);
+        textField = new JTextField("Enter a new task", 30);
         textArea = new JTextArea(20,300);
         
         //adding top title
@@ -158,6 +160,15 @@ public class MainClass {
         textArea.setEditable(false);     
         secondPanel.add(textField, BorderLayout.SOUTH);       
         secondPanel.add(textArea, BorderLayout.SOUTH);
+        textField.addFocusListener(new FocusListener() { //highlights the textField when program for easy deletion
+        	public void focusGained(FocusEvent e) {
+        	    textField.selectAll(); 
+        	}
+        	public void focusLost(FocusEvent e) {
+
+        	}
+        	}); 
+        
         textField.addActionListener(new ActionListener() { // actionListener for when enter is clicked
         	public void actionPerformed(ActionEvent e) {
         		String text = textField.getText();
@@ -168,7 +179,7 @@ public class MainClass {
         			numbInList++; //increments the task list 
 	        		textArea.append(numbInList + ":  " + text + newLine); //add the textField content to the list
 	        		textField.selectAll();
-	        		textField.setText("");
+	        		textField.setText(""); //refreshing the textField
         		}     		
         	}
         });
