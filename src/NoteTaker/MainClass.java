@@ -26,7 +26,6 @@ public class MainClass {
 	private final static String newLine = "\n";
 	private static JPanel secondPanel;
 	private static int numbInList = 0;
-	private static JScrollPane scrollForText;
 	
 	public MainClass() {
 		
@@ -38,7 +37,7 @@ public class MainClass {
 
 	public static void createWindow(String aTitle) {	
 		//creating the font
-		font = new Font("Book Antiqua", font.PLAIN, 20);	
+		font = new Font("Book Antiqua", Font.PLAIN, 20);	
 		
 		//creating the frame 
 		frame = new JFrame(aTitle);
@@ -131,34 +130,32 @@ public class MainClass {
             
         //adding the textArea
         textField = new JTextField("Enter a new task", 30);
-        textArea = new JTextArea(20,300);
+        textArea = new JTextArea();
+        textArea.setEditable(false);
         
         //adding top title
         topLabel = new JLabel("Tasks to do");
         topLabel.setFont(font);
         topLabel.setHorizontalAlignment(JLabel.CENTER); //setting the title to center alignment
         makeFontUnderlined(topLabel);     //adding an underline to the topLabel
-        
-        
+         
         //creating the main panel
         mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout()); // creating a new borderlayout
         mainPanel.setBounds(6, 3, 310, 20); // setting panel bounds
         mainPanel.setBackground(Color.WHITE); //setting background to white (more for ease of seeing where each panel is)
-        mainPanel.add(topLabel, BorderLayout.CENTER); // adding the title and centering it
-
+        mainPanel.add(topLabel, BorderLayout.CENTER); // adding the title and centering topLabel
   
         //adding the second panel
         secondPanel = new JPanel();
         secondPanel.setLayout(new BorderLayout());
-        secondPanel.setBounds(10,10, 310,200);
+        secondPanel.setBounds(10,10, 20,20);
         secondPanel.setBackground(Color.ORANGE);
         
         //adding the textField and area to the secondPanel
         textField.setBounds(3, 40, 317, 20);
-        textArea.setBounds(300, 300, 317, 20);
-        textArea.setEditable(false);     
-        secondPanel.add(textField, BorderLayout.SOUTH);       
+        textArea.setBounds(3, 40, 317, 500); 
+        secondPanel.add(textField, BorderLayout.AFTER_LAST_LINE);           
         secondPanel.add(textArea, BorderLayout.SOUTH);
         textField.addFocusListener(new FocusListener() { //highlights the textField when program for easy deletion
         	public void focusGained(FocusEvent e) {
@@ -167,8 +164,7 @@ public class MainClass {
         	public void focusLost(FocusEvent e) {
 
         	}
-        	}); 
-        
+        	});         
         textField.addActionListener(new ActionListener() { // actionListener for when enter is clicked
         	public void actionPerformed(ActionEvent e) {
         		String text = textField.getText();
@@ -182,8 +178,7 @@ public class MainClass {
 	        		textField.setText(""); //refreshing the textField
         		}     		
         	}
-        });
-        	
+        });  	
         
         //adding the menu bar and the main panel to the frame
         frame.setJMenuBar(menuBar);
