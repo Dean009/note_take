@@ -23,6 +23,8 @@ public class MainClass {
 	private static JTextArea textArea;
 	private final static String newLine = "\n";
 	private static JPanel secondPanel;
+	private static int numbInList = 0;
+	private static JScrollPane scrollForText;
 	
 	public MainClass() {
 		
@@ -150,17 +152,24 @@ public class MainClass {
         secondPanel.setBounds(10,10, 310,200);
         secondPanel.setBackground(Color.ORANGE);
         
-        textField.setBounds(30, 30, 200, 100);
-        
-        secondPanel.add(textField, BorderLayout.SOUTH);
-        
+        //adding the textField and area to the secondPanel
+        textField.setBounds(3, 40, 317, 20);
+        textArea.setBounds(300, 300, 317, 20);
+        textArea.setEditable(false);     
+        secondPanel.add(textField, BorderLayout.SOUTH);       
         secondPanel.add(textArea, BorderLayout.SOUTH);
         textField.addActionListener(new ActionListener() { // actionListener for when enter is clicked
         	public void actionPerformed(ActionEvent e) {
         		String text = textField.getText();
-        		textArea.append(text + newLine);
-        		textField.selectAll();
-        		textField.setText(" ");
+        		if (text.isEmpty() ||  text.trim().length() <= 0) {   // checks if the textField is empty or whitespace
+        			textField.setText(""); //basically says do nothing
+        		}
+        		else {
+        			numbInList++; //increments the task list 
+	        		textArea.append(numbInList + ":  " + text + newLine); //add the textField content to the list
+	        		textField.selectAll();
+	        		textField.setText("");
+        		}     		
         	}
         });
         	
