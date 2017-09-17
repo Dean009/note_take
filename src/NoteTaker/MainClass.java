@@ -10,6 +10,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.font.TextAttribute;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Map;
 
 public class MainClass {
@@ -37,7 +40,7 @@ public class MainClass {
 
 	public static void createWindow(String aTitle) {	
 		//creating the font
-		font = new Font("Book Antiqua", Font.PLAIN, 20);	
+		font = new Font("Arial", Font.PLAIN, 20);	
 		
 		//creating the frame 
 		frame = new JFrame(aTitle);
@@ -62,9 +65,34 @@ public class MainClass {
         subMenu.add(menuItem);
         
         //adding submenuitems to the first menu option
-        menuItem = new JMenuItem("Save As");
+        menuItem = new JMenuItem("Save"); //adds a save option to the list. Now currently only saves with no option on where. Need to change. 
         menuItem.setMnemonic(KeyEvent.VK_B);
         subMenu.add(menuItem);
+        menuItem.addMouseListener(new MouseAdapter(){
+            public void mousePressed(MouseEvent e) {
+            	String text1 = textArea.getText();
+            	BufferedWriter writer = null;
+            	try
+            	{
+            	    writer = new BufferedWriter( new FileWriter("Saved Tasks.txt")); //creating the new file
+            	    writer.write(text1);
+            	}
+            	catch ( IOException error)
+            	{
+            	}
+            	finally
+            	{
+            	    try
+            	    {
+            	        if ( writer != null)
+            	        writer.close();
+            	    }
+            	    catch (IOException error)
+            	    {
+            	    }
+            	}
+            	}
+            });
         
         //adding submenuitems to the first menu option
         menuItem = new JMenuItem("Print");
@@ -190,9 +218,7 @@ public class MainClass {
         frame.pack();
         frame.setResizable(false);
         frame.setVisible(true);
-        
-  
-        
+   
 	}
 	
 		
@@ -202,6 +228,21 @@ public class MainClass {
 	     attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
 	     aLabel.setFont(font2.deriveFont(attributes));
 	}
+	
+	
+	public static void changeFont(Font aFont) {
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

@@ -1,7 +1,8 @@
 BEGIN WORKING ON CONTAINERS
 
 Add buttons to each entered list item.
-Save the list, so it automatically loads the last opened list. 
+Save the list - Saving works, need to chage so its a Save As option with override. Need to space the list out in the text file better.  
+Make it so it automatically loads the last opened list. 
 Change the design.
 Calander so can assign the items to a day of the week. 
 Box to choose which save to load. 
