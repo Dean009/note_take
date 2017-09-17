@@ -203,12 +203,5 @@ public class MainClass {
 	     aLabel.setFont(font2.deriveFont(attributes));
 	}
 	
-	public void actionPerformed(ActionEvent e) {
-		String text = textField.getText();
-		textArea.append(text + newLine);
-		textField.selectAll();
-	}
-	
-	
 	
 }
