@@ -3,6 +3,7 @@ package NoteTaker;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -123,26 +124,46 @@ public class MainClass {
             	}
             });
         subMenu.add(menuItem);
-        
-        //creating the main panel
-        mainPanel = new JPanel();
-        mainPanel.setBounds(6, 3, 310, 200);
-        mainPanel.setBackground(Color.WHITE);
+            
+        //adding the textArea
+        textField = new JTextField(30);
+        textArea = new JTextArea(20,300);
         
         //adding top title
         topLabel = new JLabel("Tasks to do");
         topLabel.setFont(font);
-
-        //adding an underline to the topLabel
-        makeFontUnderlined(topLabel);  
+        topLabel.setHorizontalAlignment(JLabel.CENTER); //setting the title to center alignment
+        makeFontUnderlined(topLabel);     //adding an underline to the topLabel
         
+        
+        //creating the main panel
+        mainPanel = new JPanel();
+        mainPanel.setLayout(new BorderLayout()); // creating a new borderlayout
+        mainPanel.setBounds(6, 3, 310, 20); // setting panel bounds
+        mainPanel.setBackground(Color.WHITE); //setting background to white (more for ease of seeing where each panel is)
+        mainPanel.add(topLabel, BorderLayout.CENTER); // adding the title and centering it
+
+  
         //adding the second panel
         secondPanel = new JPanel();
+        secondPanel.setLayout(new BorderLayout());
         secondPanel.setBounds(10,10, 310,200);
         secondPanel.setBackground(Color.ORANGE);
         
-        //adding the textArea
-       
+        textField.setBounds(30, 30, 200, 100);
+        
+        secondPanel.add(textField, BorderLayout.SOUTH);
+        
+        secondPanel.add(textArea, BorderLayout.SOUTH);
+        textField.addActionListener(new ActionListener() { // actionListener for when enter is clicked
+        	public void actionPerformed(ActionEvent e) {
+        		String text = textField.getText();
+        		textArea.append(text + newLine);
+        		textField.selectAll();
+        		textField.setText(" ");
+        	}
+        });
+        	
         
         //adding the menu bar and the main panel to the frame
         frame.setJMenuBar(menuBar);
