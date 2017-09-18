@@ -13,6 +13,7 @@ import java.awt.font.TextAttribute;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Map;
 
 public class MainClass {
@@ -29,6 +30,7 @@ public class MainClass {
 	private final static String newLine = "\n";
 	private static JPanel secondPanel;
 	private static int numbInList = 0;
+	private static ArrayList<String> noteList;
 	
 	public MainClass() {
 		
@@ -39,6 +41,9 @@ public class MainClass {
 	}
 
 	public static void createWindow(String aTitle) {	
+		//creating the list
+		noteList = new ArrayList<String>();
+		
 		//creating the font
 		font = new Font("Arial", Font.PLAIN, 20);	
 		
@@ -100,8 +105,13 @@ public class MainClass {
         subMenu.add(menuItem);
         
         //adding submenuitems to the first menu option
-        menuItem = new JMenuItem("close");
+        menuItem = new JMenuItem("Close");
         menuItem.setMnemonic(KeyEvent.VK_B);
+        menuItem.addMouseListener(new MouseAdapter(){ // sets the 'close' option in the submenu to close the program down
+            public void mousePressed(MouseEvent e) {
+            	frame.dispose();
+            	}
+            });
         subMenu.add(menuItem);
 
         //second menu option
@@ -200,8 +210,9 @@ public class MainClass {
         			textField.setText(""); //basically says do nothing
         		}
         		else {
+        			noteList.add(text); //adding the task to the ArrayList
         			numbInList++; //increments the task list 
-	        		textArea.append(numbInList + ":  " + text + newLine); //add the textField content to the list
+        			textArea.append(numbInList + ":  " + text + newLine); 	
 	        		textField.selectAll();
 	        		textField.setText(""); //refreshing the textField
         		}     		
