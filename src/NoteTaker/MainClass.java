@@ -13,7 +13,7 @@ import java.awt.font.TextAttribute;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class MainClass {
@@ -30,7 +30,7 @@ public class MainClass {
 	private final static String newLine = "\n";
 	private static JPanel secondPanel;
 	private static int numbInList = 0;
-	private static ArrayList<String> noteList;
+	private static HashMap <Integer, String> noteMap;
 	
 	public MainClass() {
 		
@@ -42,7 +42,7 @@ public class MainClass {
 
 	public static void createWindow(String aTitle) {	
 		//creating the list
-		noteList = new ArrayList<String>();
+		noteMap = new HashMap<Integer, String>();
 		
 		//creating the font
 		font = new Font("Arial", Font.PLAIN, 20);	
@@ -74,6 +74,7 @@ public class MainClass {
         menuItem.setMnemonic(KeyEvent.VK_B);
         subMenu.add(menuItem);
         menuItem.addMouseListener(new MouseAdapter(){
+        	@Override
             public void mousePressed(MouseEvent e) {
             	String text1 = textArea.getText();
             	BufferedWriter writer = null;
@@ -108,7 +109,8 @@ public class MainClass {
         menuItem = new JMenuItem("Close");
         menuItem.setMnemonic(KeyEvent.VK_B);
         menuItem.addMouseListener(new MouseAdapter(){ // sets the 'close' option in the submenu to close the program down
-            public void mousePressed(MouseEvent e) {
+        	@Override
+        	public void mousePressed(MouseEvent e) {
             	frame.dispose();
             	}
             });
@@ -140,6 +142,7 @@ public class MainClass {
         menuItem = new JMenuItem("User Agreement");
         menuItem.setMnemonic(KeyEvent.VK_B);
         menuItem.addMouseListener(new MouseAdapter(){
+        	@Override
             public void mousePressed(MouseEvent e) {
             	JFrame newFrame = new JFrame("User Agreement");
         		newFrame.setSize(300,300);
@@ -154,6 +157,7 @@ public class MainClass {
         menuItem = new JMenuItem("Version");
         menuItem.setMnemonic(KeyEvent.VK_B);
         menuItem.addMouseListener(new MouseAdapter(){
+        	@Override
             public void mousePressed(MouseEvent e) {
             	JFrame newFrame = new JFrame("Version");
         		newFrame.setSize(300,300);
@@ -196,23 +200,28 @@ public class MainClass {
         secondPanel.add(textField, BorderLayout.AFTER_LAST_LINE);           
         secondPanel.add(textArea, BorderLayout.SOUTH);
         textField.addFocusListener(new FocusListener() { //highlights the textField when program for easy deletion
+        	@Override
         	public void focusGained(FocusEvent e) {
         	    textField.selectAll(); 
         	}
+        	@Override
         	public void focusLost(FocusEvent e) {
 
         	}
         	});         
         textField.addActionListener(new ActionListener() { // actionListener for when enter is clicked
+        	@Override
         	public void actionPerformed(ActionEvent e) {
+        		int newNum = 0;
         		String text = textField.getText();
         		if (text.isEmpty() ||  text.trim().length() <= 0) {   // checks if the textField is empty or whitespace
-        			textField.setText(""); //basically says do nothing
+        			textField.setText(""); //basically says 'do nothing'
         		}
         		else {
-        			noteList.add(text); //adding the task to the ArrayList
+        			newNum++;
+        			noteMap.put(newNum,text); //adding the task to the HashMap
         			numbInList++; //increments the task list 
-        			textArea.append(numbInList + ":  " + text + newLine); 	
+        			textArea.append(numbInList + ":  " + text + newLine);
 	        		textField.selectAll();
 	        		textField.setText(""); //refreshing the textField
         		}     		
