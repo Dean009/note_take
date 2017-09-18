@@ -230,8 +230,16 @@ public class MainClass {
 	}
 	
 	
-	public static void changeFont(Font aFont) {
-		
+	public static void changeFont (Component component, Font font) // changes font of a container and its children
+	{
+	    component.setFont (font);
+	    if (component instanceof Container)
+	    {
+	        for (Component child : ((Container)component).getComponents()) // loops through the containers 
+	        {
+	            changeFont (child, font); //recursively changes font
+	        }
+	    }
 	}
 	
 	

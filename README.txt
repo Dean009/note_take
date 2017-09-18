@@ -1,6 +1,7 @@
 BEGIN WORKING ON CONTAINERS
 
 Add buttons to each entered list item.
+Add a refresh list, that deleted all the items. 
 Save the list - Saving works, need to chage so its a Save As option with override. Need to space the list out in the text file better.  
 Make it so it automatically loads the last opened list. 
 Change the design.
