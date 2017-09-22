@@ -122,14 +122,25 @@ public class MainClass {
         subMenu.getAccessibleContext();
         menuBar.add(subMenu);
         
-        //adding submenuitems to the first menu option
+        //adding submenuitems to the second menu option
         menuItem = new JMenuItem("Launch on Windows start up");
         menuItem.setMnemonic(KeyEvent.VK_B);
         subMenu.add(menuItem);
         
-        //adding submenuitems to the first menu option
+        //adding submenuitems to the second menu option
         menuItem = new JMenuItem("Change Font");
         menuItem.setMnemonic(KeyEvent.VK_B);
+        subMenu.add(menuItem);
+        
+        //adding submenuitems to the second menu option
+        menuItem = new JMenuItem("Clear Tasks");
+        menuItem.setMnemonic(KeyEvent.VK_B);
+        menuItem.addMouseListener(new MouseAdapter(){
+        	@Override
+            public void mousePressed(MouseEvent e) {
+        		textArea.setText("");
+            	}
+            });
         subMenu.add(menuItem);
    
         //third menu option
@@ -138,7 +149,7 @@ public class MainClass {
         subMenu.getAccessibleContext();
         menuBar.add(subMenu);
         
-        //adding submenuitems to the first menu option
+        //adding submenuitems to the third menu option
         menuItem = new JMenuItem("User Agreement");
         menuItem.setMnemonic(KeyEvent.VK_B);
         menuItem.addMouseListener(new MouseAdapter(){
@@ -153,7 +164,7 @@ public class MainClass {
             });
         subMenu.add(menuItem);
         
-        //adding submenuitems to the first menu option
+        //adding submenuitems to the third menu option
         menuItem = new JMenuItem("Version");
         menuItem.setMnemonic(KeyEvent.VK_B);
         menuItem.addMouseListener(new MouseAdapter(){
@@ -176,10 +187,9 @@ public class MainClass {
         textArea.setEditable(false);
         
         //adding top title
-        topLabel = new JLabel("Tasks to do");
+        topLabel = new JLabel("Tasks");
         topLabel.setFont(font);
         topLabel.setHorizontalAlignment(JLabel.CENTER); //setting the title to center alignment
-        makeFontUnderlined(topLabel);     //adding an underline to the topLabel
          
         //creating the main panel
         mainPanel = new JPanel();
@@ -187,12 +197,12 @@ public class MainClass {
         mainPanel.setBounds(6, 3, 310, 20); // setting panel bounds
         mainPanel.setBackground(Color.WHITE); //setting background to white (more for ease of seeing where each panel is)
         mainPanel.add(topLabel, BorderLayout.CENTER); // adding the title and centering topLabel
-  
+        
         //adding the second panel
         secondPanel = new JPanel();
         secondPanel.setLayout(new BorderLayout());
         secondPanel.setBounds(10,10, 20,20);
-        secondPanel.setBackground(Color.ORANGE);
+        secondPanel.setBackground(Color.YELLOW); //Sets the secondPanel to yellow
         
         //adding the textField and area to the secondPanel
         textField.setBounds(3, 40, 317, 20);
