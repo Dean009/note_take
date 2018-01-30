@@ -17,4 +17,4 @@ Seperate work/social/play lists.
 Voice functionality?
 App? - How to access it? on main lock screen?
 Sharing lists
-
+Edit Item is list

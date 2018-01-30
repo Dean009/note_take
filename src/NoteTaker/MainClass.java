@@ -58,18 +58,18 @@ public class MainClass {
         menuBar.setPreferredSize(new Dimension(200,20));         
         menuBar.setBackground(Color.LIGHT_GRAY);
         
-        //first menu option
+        //adding file menu option
         subMenu = new JMenu("File");
         subMenu.setMnemonic(KeyEvent.VK_A);
         subMenu.getAccessibleContext();
         menuBar.add(subMenu);
         
-        //adding submenuitems to the first menu option
+        //adding Open to the first menu option
         menuItem = new JMenuItem("Open File"); 
         menuItem.setMnemonic(KeyEvent.VK_B);
         subMenu.add(menuItem);
         
-        //adding submenuitems to the first menu option
+        //adding save to the first menu option which saves the list to a txt file
         menuItem = new JMenuItem("Save"); //adds a save option to the list. Now currently only saves with no option on where. Need to change. 
         menuItem.setMnemonic(KeyEvent.VK_B);
         subMenu.add(menuItem);
@@ -100,12 +100,12 @@ public class MainClass {
             	}
             });
         
-        //adding submenuitems to the first menu option
+        //adding print to the first menu option
         menuItem = new JMenuItem("Print");
         menuItem.setMnemonic(KeyEvent.VK_B);
         subMenu.add(menuItem);
         
-        //adding submenuitems to the first menu option
+        //adding close to the first menu option
         menuItem = new JMenuItem("Close");
         menuItem.setMnemonic(KeyEvent.VK_B);
         menuItem.addMouseListener(new MouseAdapter(){ // sets the 'close' option in the submenu to close the program down
@@ -116,23 +116,23 @@ public class MainClass {
             });
         subMenu.add(menuItem);
 
-        //second menu option
+        //Options menu option
         subMenu = new JMenu("Options");
         subMenu.setMnemonic(KeyEvent.VK_A);
         subMenu.getAccessibleContext();
         menuBar.add(subMenu);
         
-        //adding submenuitems to the second menu option
+        //adding Launch on windows start up to the second menu option
         menuItem = new JMenuItem("Launch on Windows start up");
         menuItem.setMnemonic(KeyEvent.VK_B);
         subMenu.add(menuItem);
         
-        //adding submenuitems to the second menu option
+        //adding Change Font to the second menu option
         menuItem = new JMenuItem("Change Font");
         menuItem.setMnemonic(KeyEvent.VK_B);
         subMenu.add(menuItem);
         
-        //adding submenuitems to the second menu option
+        //adding Clear Tasks to the second menu option
         menuItem = new JMenuItem("Clear Tasks");
         menuItem.setMnemonic(KeyEvent.VK_B);
         menuItem.addMouseListener(new MouseAdapter(){
@@ -143,13 +143,13 @@ public class MainClass {
             });
         subMenu.add(menuItem);
    
-        //third menu option
+        //adding the About menu option
         subMenu = new JMenu("About");
         subMenu.setMnemonic(KeyEvent.VK_A);
         subMenu.getAccessibleContext();
         menuBar.add(subMenu);
         
-        //adding submenuitems to the third menu option
+        //adding User Agreement to the third menu option
         menuItem = new JMenuItem("User Agreement");
         menuItem.setMnemonic(KeyEvent.VK_B);
         menuItem.addMouseListener(new MouseAdapter(){
@@ -164,7 +164,7 @@ public class MainClass {
             });
         subMenu.add(menuItem);
         
-        //adding submenuitems to the third menu option
+        //adding Version to the third menu option
         menuItem = new JMenuItem("Version");
         menuItem.setMnemonic(KeyEvent.VK_B);
         menuItem.addMouseListener(new MouseAdapter(){
@@ -218,7 +218,8 @@ public class MainClass {
         	public void focusLost(FocusEvent e) {
 
         	}
-        	});         
+        	});       
+        
         textField.addActionListener(new ActionListener() { // actionListener for when enter is clicked
         	@Override
         	public void actionPerformed(ActionEvent e) {
@@ -237,6 +238,10 @@ public class MainClass {
         		}     		
         	}
         });  	
+        
+        //Remove the item specified from the hashmap
+       
+        
         
         //adding the menu bar and the main panel to the frame
         frame.setJMenuBar(menuBar);
